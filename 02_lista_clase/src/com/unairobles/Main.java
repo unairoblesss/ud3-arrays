@@ -15,6 +15,8 @@ public class Main {
         for (int i = 0; i < n; i++){
         System.out.println("Escribe Nombre y Apellido de compañer@ de clase: ");
         nombres[i] = br.readLine();}
-        "Introduce tu busqueda"
+        System.out.println("Introduce tu busqueda");
+        char m = (char) br.read();
+
     }
 }
