@@ -13,7 +13,7 @@ public class Main {
         double max = Integer.MIN_VALUE;
 
         double n = 0;
-        double m = 0;
+        double m;
 
         double[] temperaturas;
         temperaturas = new double[24];
