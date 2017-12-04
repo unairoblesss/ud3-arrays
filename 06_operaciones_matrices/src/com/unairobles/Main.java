@@ -33,26 +33,64 @@ public class Main {
                         visualizar(sumamatrizes(matrizuno, matrizdos));
                         break;
                     case 'b':
-                        break;
-                    case 'c':
+                        System.out.println("Escribe el escalar: ");
+                        int escalar = Integer.parseInt(br.readLine());
+                        visualizar(productoescalar(matrizuno,escalar));
                         break;
                     case 'd':
+                        visualizar(traspuesta(matrizuno));
                         break;
+                    case 'c':
+                        visualizar(producto(matrizuno, matrizdos));
+                        break;
+                    default:
+                        System.out.println(" ESCRIBE UNA OPCION VALIDA: ");
                 }
             } while (opcion != 'e');
         }
     }
 
-    public static int[][] sumamatrizes(int[][] matrizuno, int[][] matrizdos) {
-        int[][] r = new int[4][4];
-
-        return r;
-    }
-
-    public static int visualizar(int[][] matriz) throws IOException {
+    public static int[][] productoescalar(int[][] matrizuno, int escalar) {
+        int[][] matriz = new int[4][4];
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {
-                System.out.format("%4d", matriz[i][j]);
+                matriz[i][j] = matrizuno[i][j] * escalar;
+            }
+        }
+        return matriz;
+    }
+    public static int[][] sumamatrizes(int[][] matrizuno, int[][] matrizdos) {
+        int[][] matriz = new int[4][4];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                matriz[i][j] = matrizuno[i][j] + matrizdos[i][j];
+            }
+        }
+        return matriz;
+    }
+    public static int[][] traspuesta(int[][] matrizuno) {
+        int[][] matriz = new int[4][4];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                matriz[j][i] = matrizuno[i][j];
+            }
+        }
+        return matriz;
+    }
+    public static int[][] producto(int[][] matrizuno, int[][] matrizdos) {
+        int[][] matriz = new int[4][4];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                matriz[j][i] = matrizuno[i][j] * matrizdos[i][j];
+            }
+        }
+        return matriz;
+    }
+    public static void visualizar(int[][] matriz) throws IOException {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                System.out.format("%d", matriz[i][j]);
+                System.out.println();
             }
         }
     }
