@@ -16,38 +16,42 @@ public class Main {
                 matrizuno[i][j] = r.nextInt(100);
                 matrizdos[i][j] = r.nextInt(100);
             }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            char opcion;
-            do {
-                System.out.println(" OPERACIONES DISPONIBLES ");
-                System.out.println(" a) Sumar matrices ");
-                System.out.println(" b) Producto por un escalar ");
-                System.out.println(" c) Producto");
-                System.out.println(" d) Traspuesta ");
-                System.out.println(" e) Salir ");
-                System.out.println(" OPCION: ");
-                opcion = br.readLine().charAt(0);
-                switch (opcion) {
-                    case 'a':
-                        visualizar(sumamatrizes(matrizuno, matrizdos));
-                        break;
-                    case 'b':
-                        System.out.println("Escribe el escalar: ");
-                        int escalar = Integer.parseInt(br.readLine());
-                        visualizar(productoescalar(matrizuno,escalar));
-                        break;
-                    case 'd':
-                        visualizar(traspuesta(matrizuno));
-                        break;
-                    case 'c':
-                        visualizar(producto(matrizuno, matrizdos));
-                        break;
-                    default:
-                        System.out.println(" ESCRIBE UNA OPCION VALIDA: ");
-                }
-            } while (opcion != 'e');
         }
+
+        visualizar(matrizuno);
+        visualizar(matrizdos);
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        char opcion;
+        do {
+            System.out.println(" OPERACIONES DISPONIBLES ");
+            System.out.println(" a) Sumar matrices ");
+            System.out.println(" b) Producto por un escalar ");
+            System.out.println(" c) Producto");
+            System.out.println(" d) Traspuesta ");
+            System.out.println(" e) Salir ");
+            System.out.println(" OPCION: ");
+            opcion = br.readLine().charAt(0);
+            switch (opcion) {
+                case 'a':
+                    visualizar(sumamatrizes(matrizuno, matrizdos));
+                    break;
+                case 'b':
+                    System.out.println("Escribe el escalar: ");
+                    int escalar = Integer.parseInt(br.readLine());
+                    visualizar(productoescalar(matrizuno, escalar));
+                    break;
+                case 'd':
+                    visualizar(traspuesta(matrizuno));
+                    break;
+                case 'c':
+                    visualizar(producto(matrizuno, matrizdos));
+                    break;
+                default:
+                    System.out.println(" ESCRIBE UNA OPCION VALIDA: ");
+            }
+        } while (opcion != 'e');
+
     }
 
     public static int[][] productoescalar(int[][] matrizuno, int escalar) {
@@ -59,6 +63,7 @@ public class Main {
         }
         return matriz;
     }
+
     public static int[][] sumamatrizes(int[][] matrizuno, int[][] matrizdos) {
         int[][] matriz = new int[4][4];
         for (int i = 0; i < matriz.length; i++) {
@@ -68,6 +73,7 @@ public class Main {
         }
         return matriz;
     }
+
     public static int[][] traspuesta(int[][] matrizuno) {
         int[][] matriz = new int[4][4];
         for (int i = 0; i < matriz.length; i++) {
@@ -77,6 +83,7 @@ public class Main {
         }
         return matriz;
     }
+
     public static int[][] producto(int[][] matrizuno, int[][] matrizdos) {
         int[][] matriz = new int[4][4];
         for (int i = 0; i < matriz.length; i++) {
@@ -86,12 +93,15 @@ public class Main {
         }
         return matriz;
     }
+
     public static void visualizar(int[][] matriz) throws IOException {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {
-                System.out.format("%d", matriz[i][j]);
-                System.out.println();
+                System.out.format("%4d", matriz[i][j]);
             }
+            System.out.println();
         }
+        System.out.println();
+
     }
 }
